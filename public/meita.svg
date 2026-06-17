@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="400" y2="400">
+      <stop offset="0%" stop-color="#fce7f3"/>
+      <stop offset="50%" stop-color="#e9d5ff"/>
+      <stop offset="100%" stop-color="#fef08a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="200" fill="url(#bg)"/>
+  <circle cx="200" cy="160" r="70" fill="#f9a8d4"/>
+  <ellipse cx="200" cy="310" rx="100" ry="70" fill="#f9a8d4"/>
+  <circle cx="170" cy="150" r="8" fill="#831843"/>
+  <circle cx="230" cy="150" r="8" fill="#831843"/>
+  <path d="M175 185 Q200 210 225 185" stroke="#831843" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <text x="200" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#9d174d">Nomaini ar savu foto</text>
+</svg>

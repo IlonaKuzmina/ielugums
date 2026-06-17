@@ -1,26 +1,523 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pink: #f472b6;
+  --purple: #a78bfa;
+  --yellow: #fbbf24;
+  --mint: #34d399;
+  --sky: #38bdf8;
+  --coral: #fb7185;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fredoka);
+  --font-body: var(--font-nunito);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Page background ── */
+
+.invitation-page {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 2.5rem;
+  background: linear-gradient(
+    135deg,
+    #fdf2f8 0%,
+    #ede9fe 35%,
+    #fef9c3 65%,
+    #d1fae5 100%
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 12s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ── Confetti ── */
+
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  border-radius: 2px;
+  opacity: 0.85;
+  animation: confetti-fall linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.3;
+  }
+}
+
+/* ── Floating emoji shapes ── */
+
+.floating-shapes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  opacity: 0.55;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  top: 8%;
+  left: 6%;
+  animation-delay: 0s;
+}
+.shape-2 {
+  top: 15%;
+  right: 8%;
+  animation-delay: 1s;
+}
+.shape-3 {
+  bottom: 20%;
+  left: 10%;
+  animation-delay: 2s;
+}
+.shape-4 {
+  bottom: 12%;
+  right: 12%;
+  animation-delay: 0.5s;
+}
+.shape-5 {
+  top: 45%;
+  left: 3%;
+  animation-delay: 1.5s;
+}
+.shape-6 {
+  top: 40%;
+  right: 4%;
+  animation-delay: 2.5s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(8deg);
+  }
+}
+
+/* ── Card ── */
+
+.invitation-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: clamp(1.75rem, 5vw, 2.5rem);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border-radius: 2rem;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  box-shadow:
+    0 20px 60px rgba(167, 139, 250, 0.25),
+    0 0 0 3px rgba(244, 114, 182, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.invitation-card::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--pink),
+    var(--purple),
+    var(--yellow),
+    var(--mint)
+  );
+  z-index: -1;
+  animation: border-glow 4s linear infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes border-glow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ── Header ── */
+
+.invitation-badge {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 0.35rem 1rem;
+  font-family: var(--font-fredoka), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #9d174d;
+  background: linear-gradient(135deg, #fce7f3, #ede9fe);
+  border-radius: 999px;
+  animation: pulse-badge 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+.invitation-title {
+  margin: 0;
+  font-family: var(--font-fredoka), sans-serif;
+  font-size: clamp(1.5rem, 5.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #581c87;
+}
+
+.age-highlight {
+  display: block;
+  margin-top: 0.25rem;
+  background: linear-gradient(90deg, var(--pink), var(--purple), var(--coral));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
+  background-size: 200% auto;
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+/* ── Photo ── */
+
+.photo-frame {
+  margin: 1.75rem auto;
+}
+
+.photo-ring {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--pink),
+    var(--purple),
+    var(--yellow),
+    var(--sky)
+  );
+  background-size: 300% 300%;
+  animation: border-glow 4s linear infinite;
+  box-shadow: 0 8px 30px rgba(244, 114, 182, 0.35);
+}
+
+.child-photo {
+  display: block;
+  width: clamp(160px, 45vw, 220px);
+  height: clamp(160px, 45vw, 220px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  animation: photo-bounce 3s ease-in-out infinite;
+}
+
+@keyframes photo-bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+/* ── Details ── */
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .details {
+    grid-template-columns: 1fr 1.5fr;
+    align-items: stretch;
+  }
+}
+
+.detail-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(135deg, #fdf4ff, #f0f9ff);
+  border-radius: 1rem;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(167, 139, 250, 0.2);
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.detail-card:nth-child(2) .detail-icon {
+  animation-delay: 0.5s;
+}
+
+.detail-card--venue {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .detail-card--venue {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+  }
+}
+
+.venue-logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(167, 139, 250, 0.15);
+  animation: logo-float 4s ease-in-out infinite;
+}
+
+.venue-logo {
+  display: block;
+  width: auto;
+  height: clamp(44px, 12vw, 60px);
+  object-fit: contain;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
+.detail-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a855f7;
+}
+
+.detail-value {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-fredoka), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #4c1d95;
+}
+
+.detail-sub {
+  margin: 0.1rem 0 0;
+  font-size: 0.9rem;
+  color: #7c3aed;
+  opacity: 0.8;
+}
+
+/* ── Message ── */
+
+.invitation-message {
+  margin: 0 0 1.5rem;
+  font-size: clamp(0.95rem, 2.8vw, 1.05rem);
+  line-height: 1.65;
+  color: #6b21a8;
+}
+
+/* ── Wishlist button ── */
+
+.wishlist-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 340px;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-fredoka), sans-serif;
+  font-size: clamp(0.95rem, 2.8vw, 1.05rem);
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--pink), var(--purple), var(--coral));
+  background-size: 200% auto;
+  box-shadow: 0 6px 24px rgba(244, 114, 182, 0.45);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-position 0.3s ease;
+  animation: btn-glow 3s ease-in-out infinite;
+}
+
+.wishlist-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(167, 139, 250, 0.5);
+  background-position: right center;
+}
+
+.wishlist-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@keyframes btn-glow {
+  0%,
+  100% {
+    box-shadow: 0 6px 24px rgba(244, 114, 182, 0.45);
+  }
+  50% {
+    box-shadow: 0 6px 32px rgba(167, 139, 250, 0.55);
+  }
+}
+
+/* ── Footer ── */
+
+.invitation-footer {
+  margin-top: 1.25rem;
+  font-family: var(--font-fredoka), sans-serif;
+  font-size: 0.9rem;
+  color: #9d174d;
+  opacity: 0.85;
+}
+
+/* ── Entrance animations ── */
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease both;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.15s;
+}
+.animate-delay-2 {
+  animation-delay: 0.3s;
+}
+.animate-delay-3 {
+  animation-delay: 0.45s;
+}
+.animate-delay-4 {
+  animation-delay: 0.6s;
+}
+.animate-delay-5 {
+  animation-delay: 0.75s;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive tweaks ── */
+
+@media (max-width: 380px) {
+  .invitation-card {
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+  }
+
+  .floating-shapes .shape {
+    opacity: 0.35;
+  }
 }

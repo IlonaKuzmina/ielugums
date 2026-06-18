@@ -42,29 +42,24 @@ export function Invitation() {
 
         <section className="details animate-fade-up animate-delay-2">
           <div className="detail-card">
-            <div>
-              <p className="detail-label">Kad?</p>{" "}
-              <span className="detail-icon">📅</span>
-              <p className="detail-value">{invitation.date}</p>
-              <p className="detail-sub">{invitation.time}</p>
-            </div>
+            <p className="detail-label">Kad?</p>{" "}
+            <span className="detail-icon">📅</span>
+            <p className="detail-value">{invitation.date} {invitation.time}</p>
+           
           </div>
 
-          <div className="detail-card detail-card--venue">
-            <div>
-              <p className="detail-label">Kur?</p>
-              <div className="venue-logo-wrap">
-                <Image
-                  src={invitation.venueLogo}
-                  alt="Marymaris logo"
-                  width={140}
-                  height={70}
-                  className="venue-logo"
-                />
-              </div>
-              {/* <p className="detail-value">{invitation.location}</p> */}
-              <p className="detail-sub">{invitation.address}</p>
+          <div className="detail-card">
+            <p className="detail-label">Kur?</p>
+            <div className="venue-logo-wrap">
+              <Image
+                src={invitation.venueLogo}
+                alt="Marymaris logo"
+                width={140}
+                height={70}
+                className="venue-logo"
+              />
             </div>
+            <p className="detail-sub">{invitation.address}</p>
           </div>
         </section>
 

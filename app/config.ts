@@ -1,11 +1,11 @@
 export const invitation = {
   childName: "Arina",
-  age: 5,
+  age: 7,
   date: "12. jūlijs, 2026",
   time: "12:00",
   location: "MARYMARIS",
   address: "AKROPOLE Rīga, Latgales iela 257",
-  image: "/meita.svg",
+  image: "/meita.jpeg",
   venueLogo: "/vieta.png",
   wishlistUrl: "https://mywishlist.online/w/bgkoxl/arinas-wishlist",
   message:

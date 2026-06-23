@@ -41,11 +41,25 @@ export function Invitation() {
         </div>
 
         <section className="details animate-fade-up animate-delay-2">
-          <div className="detail-card">
-            <p className="detail-label">Kad?</p>{" "}
-            <span className="detail-icon">📅</span>
-            <p className="detail-value">{invitation.time} {invitation.date}</p>
-    
+          <div className="detail-card">   
+            <p className="detail-label">Kad?</p>
+            <span className="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" className="detail-icon-svg">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+                <path
+                  d="M12 7v5l3.5 2"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <div>
+           
+              <p className="detail-value">{invitation.date}</p>
+              <p className="detail-sub">{invitation.time}</p>
+            </div>
           </div>
 
           <div className="detail-card">

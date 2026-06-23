@@ -326,9 +326,18 @@ body {
 }
 
 .detail-icon {
-  font-size: 52px;
+  display: flex;
+  height: 75px;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  color: #a855f7;
   animation: wiggle 2s ease-in-out infinite;
+}
+
+.detail-icon-svg {
+  width: clamp(2rem, 6vw, 2.5rem);
+  height: clamp(2rem, 6vw, 2.5rem);
 }
 
 .detail-card:nth-child(2) .detail-icon {

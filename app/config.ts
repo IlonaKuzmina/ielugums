@@ -1,7 +1,7 @@
 export const invitation = {
   childName: "Arina",
   age: 7,
-  date: "12. jūlijs, 2026",
+  date: "12.07.2026",
   time: "12:00",
   location: "MARYMARIS",
   address: "AKROPOLE Rīga, Latgales iela 257",

@@ -44,8 +44,8 @@ export function Invitation() {
           <div className="detail-card">
             <p className="detail-label">Kad?</p>{" "}
             <span className="detail-icon">📅</span>
-            <p className="detail-value">{invitation.date} {invitation.time}</p>
-           
+            <p className="detail-value">{invitation.time} {invitation.date}</p>
+    
           </div>
 
           <div className="detail-card">
@@ -59,7 +59,13 @@ export function Invitation() {
                 className="venue-logo"
               />
             </div>
-            <p className="detail-sub">{invitation.address}</p>
+            <a
+              href="https://www.google.com/maps/dir//Apollo+Kino+Akropole+R%C4%ABga,+Akropole+R%C4%ABga+%7C,+Latgales+iela+257,+Latgales+priek%C5%A1pils%C4%93ta,+R%C4%ABga,+LV-1019/@56.9506497,24.0191549,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x46eed1c04d9e047d:0xa31095e41cd1ac85!2m2!1d24.175253!2d56.9245981?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+            >
+              {" "}
+              <p className="detail-sub">{invitation.address}</p>{" "}
+            </a>
           </div>
         </section>
 

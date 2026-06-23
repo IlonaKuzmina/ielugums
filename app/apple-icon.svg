@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="20" y1="10" x2="160" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f472b6"/>
+      <stop offset="0.5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="balloon" x1="55" y1="35" x2="125" y2="115" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fb7185"/>
+      <stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" rx="40" fill="url(#bg)"/>
+  <ellipse cx="90" cy="78" rx="38" ry="46" fill="url(#balloon)"/>
+  <ellipse cx="76" cy="62" rx="10" ry="14" fill="white" fill-opacity="0.35"/>
+  <path d="M90 124 L84 142" stroke="#fde68a" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="132" cy="42" r="8" fill="#fef9c3"/>
+  <circle cx="48" cy="52" r="6" fill="#fef9c3"/>
+  <path d="M124 136 L132 128 M132 136 L124 128" stroke="#fef9c3" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="36" cy="120" r="4" fill="#fef9c3" fill-opacity="0.8"/>
+  <circle cx="148" cy="108" r="5" fill="#fef9c3" fill-opacity="0.8"/>
+</svg>

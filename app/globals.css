@@ -336,8 +336,9 @@ body {
 }
 
 .detail-icon-svg {
-  width: clamp(2rem, 6vw, 2.5rem);
-  height: clamp(2rem, 6vw, 2.5rem);
+  width: 80px;
+  height: auto;
+  
 }
 
 .detail-card:nth-child(2) .detail-icon {
